@@ -11,6 +11,10 @@ interface FilloutResponse {
 
 const router = Router()
 
+router.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
 router.get('/:formId/filteredResponses', async (req, res) => {
   const { formId } = req.params;
   const { page, limit, ...filters } = req.query as { page?: string; limit?: string; filters?: string };
@@ -60,5 +64,7 @@ router.get('/:formId/filteredResponses', async (req, res) => {
     res.status(500).send({ message: 'Error fetching responses' });
   }
 });
+
+
 
 export default router;
